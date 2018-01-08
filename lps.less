@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:100');
+@import url('https://fonts.googleapis.com/css?family=Joti+One');
+
+@font-size :.75rem;
+@font-family: 'Raleway',sans-serif;
+@font-colour: #fcfcfc;
+@font-colour-active: orange;
+@pad: 8px;
+@menu-colour: @primary-colour;
+@primary-colour: #353535;
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-size: @font-size;
+    font-family: @font-family;
+    color: @font-colour;
+    background: @primary-colour;
+    font-weight: lighter;
+    overflow: hidden;
+}
+
+.site {
+    height: 100vh;
+    width: 100vw;
+    [name=render-menu] {
+        height: 50px
+    }
+    [name=render-content] {
+        height: calc(~"100vh" - 50px)
+    }
+}
+
+a {
+    &,
+    &:active,
+    &:hover {
+        color: @font-colour;
+        text-decoration: none;
+    }
+}
+
+hr{
+    opacity: 0.5;
+}
+
+[name=canvas] {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+}
+
+ul {
+    list-style: none;
+    &.menu {
+        font-size: 1.5rem;
+        padding: @pad;
+        margin: 0;
+        li {
+            background: @menu-colour;
+            margin: 0 (@pad/2);
+            display: inline-block;
+            a {
+                padding: @pad (@pad*2);
+                display: block;
+            }
+            &.selected > a {
+                border-bottom: 2px solid lighten(@menu-colour, 5%);
+            }
+            &:hover {
+                border-bottom: 2px solid lighten(@menu-colour, 5%);
+                .menu {
+                    display: block;
+                }
+            }
+        }
+    }
+    &.sub {
+        display: none;
+        position: absolute;
+        li {
+            display: block;
+        }
+        &,
+        li {
+            margin: 0;
+        }
+    }
+}
+p[name=email]{
+    a{
+        font-size: 1.5rem;
+    }
+}
+[name=render-content] {
+    overflow: auto;
+    z-index: 1;
+    .content {
+        padding: @pad;
+        height: calc(~"100%" - 50px);
+        .text-area{
+            text-align: center;
+            padding:@pad;
+            font-size: 1rem;
+        }
+        &[name=home] {
+            z-index: 100;
+            display: grid;
+            @media screen and (min-width: 1280px){
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-areas: 'right mid left';
+            }
+            @media screen and (max-width: 1280px){
+                grid-template-columns: 1fr;
+                grid-template-areas: 'mid';
+            }            
+            .mid-sec {
+                height:100%;
+                grid-area: mid;
+                padding: @pad;
+                img {
+                    display: table;
+                    margin: 0 auto;
+                    @media screen and (min-width: 1280px){
+                        width: 80%;
+                    }
+                    @media screen and (max-width: 1280px){
+                        height:50%;
+                    }                    
+                }
+                h1 {
+                    display: table;
+                    margin: 0 auto;  
+                    @media screen and (min-width: 1600px){
+                        font-size: 4.5rem;
+                        margin-top: -12.5%;
+                    } 
+                    @media screen and (min-width: 1440px)and (max-width: 1600px){
+                        font-size: 4.5rem;
+                        margin-top: -13%;
+                    } 
+                    @media screen and (min-width: 1140px) and (max-width: 1460px){
+                        font-size: 3.5rem; 
+                        margin-top: -14%;
+                    }  
+                    @media screen and (min-width: 0px) and (max-width: 1280px){
+                        font-size: 4rem; 
+                        margin-top: 0;
+                    }
+                    font-family: 'Joti One', cursive;
+                }
+                h2 {
+                    display: table;
+                    margin: 0 auto;
+                    font-size: 2.5rem;
+                    margin-top: 1%;
+                    @media screen and (min-width: 1440px)and (max-width: 1600px){
+                        font-size: 2.5rem;
+                    } 
+                    @media screen and (min-width: 1140px) and (max-width: 1460px){
+                        font-size: 2rem; 
+                    } 
+                }
+            }
+
+        }
+    }
+}
