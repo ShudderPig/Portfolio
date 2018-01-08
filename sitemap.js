@@ -4,11 +4,11 @@ const menu = [
         parent:null,
         name:'Home',
         path:'Home'
-    }/*,
+    },
     {
         id:2,
         parent:null,
-        name:'Contact',
-        path:'Contact'
-    } */       
+        name:'...Coming Soon...',
+        path:'Home'
+    }       
 ]
