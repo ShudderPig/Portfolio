@@ -103,6 +103,11 @@ p[name=email]{
     pointer-events: none;
     display:none;
 }
+@-webkit-keyframes float {
+    0%, 100%       { margin-top:0 }
+    20%    { margin-top: -.5% }
+    60%    { margin-top: .5% }
+}
 [name=render-content] {
     overflow: auto;
     z-index: 10;
@@ -115,6 +120,11 @@ p[name=email]{
             font-size: 1rem;
         }
         &[name=home] {
+            animation-name: float;
+            animation-delay: 0;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
             z-index: 1;
             display: grid;
             @media screen and (min-width: 1280px){
