@@ -158,7 +158,7 @@ const lps = {
 
             this.counter = 0;
 
-            var signHelper = Math.floor(Math.random() * 2);
+            let signHelper = Math.floor(Math.random() * 2);
 
             if (signHelper == 1) {
                 this.sign = -1;
@@ -168,13 +168,13 @@ const lps = {
         },
 
         drawparticles: (ctx) => {
-            for (var i = 0; i < 1500; i++) {
-                var randomX = Math.round(Math.random() * (window.innerWidth + 500));
-                var randomY = Math.round(Math.random() * (window.innerHeight + 500));
-                var speed = 0.02 + Math.random() * 0.5;
-                var size = Math.floor(Math.random() * 15);
+            for (let i = 0; i < 1500; i++) {
+                let randomX = Math.round(Math.random() * (window.innerWidth + 500));
+                let randomY = Math.round(Math.random() * (window.innerHeight + 500));
+                let speed = 0.02 + Math.random() * 0.5;
+                let size = Math.floor(Math.random() * 15);
 
-                var circle = new lps.particles.particles(100, speed, size, randomX, randomY);
+                let circle = new lps.particles.particles(100, speed, size, randomX, randomY);
                 lps.particles.circles.push(circle);
             }
             lps.particles.draw(ctx);
@@ -183,8 +183,8 @@ const lps = {
         draw: (mainContext) => {
             mainContext.clearRect(0, 0, (window.innerWidth + 500), (window.innerHeight + 500));
 
-            for (var i = 0; i < lps.particles.circles.length; i++) {
-                var myCircle = lps.particles.circles[i];
+            for (let i = 0; i < lps.particles.circles.length; i++) {
+                let myCircle = lps.particles.circles[i];
                 myCircle.update();
             }
             requestAnimationFrame(function () {
@@ -203,7 +203,7 @@ const lps = {
 
 home = {
     init:() =>{
-        var root = $('[name=home].content')
+        let root = $('[name=home].content')
     }
 }
 
