@@ -1,4 +1,4 @@
 <script>
     url = new URL(window.location)
-    window.location.href = url.pathname.replace(/\//g,'?');
+    window.location.href = '/' + url.pathname.replace(/\//g,'?');
 </script>
