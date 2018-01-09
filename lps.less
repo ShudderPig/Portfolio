@@ -95,9 +95,17 @@ p[name=email]{
         font-size: 1.5rem;
     }
 }
+[name=grid]{
+    position: absolute;
+    width:150%;
+    opacity: 0.16;
+    z-index: 0;
+    pointer-events: none;
+    display:none;
+}
 [name=render-content] {
     overflow: auto;
-    z-index: 1;
+    z-index: 10;
     .content {
         padding: @pad;
         height: calc(~"100%" - 50px);
@@ -107,7 +115,7 @@ p[name=email]{
             font-size: 1rem;
         }
         &[name=home] {
-            z-index: 100;
+            z-index: 1;
             display: grid;
             @media screen and (min-width: 1280px){
                 grid-template-columns: 1fr 1fr 1fr;

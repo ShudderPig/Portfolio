@@ -204,6 +204,17 @@ const lps = {
 home = {
     init:() =>{
         let root = $('[name=home].content')
+        $('.mid-sec > img',root).on('mouseover',(e) => {
+            $('.mid-sec > img',root).attr('src','/madme_lowpoly.png')
+            $('[name=grid]').show();
+            $('[name=jobtitle]').text('Designer')
+        })
+        
+        $('.mid-sec > img',root).on('mouseleave',(e) => {
+            $('.mid-sec > img',root).attr('src','/Me_LowPoly.png')
+            $('[name=grid]').hide();
+            $('[name=jobtitle]').text('Web Developer')
+        })
     }
 }
 
