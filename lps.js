@@ -204,7 +204,7 @@ home = {
         })
         
         $('.mid-sec > img',root).on('mouseleave',(e) => {
-            $('.mid-sec > img',root).attr('src','/Me_LowPoly.png')
+            $('.mid-sec > img',root).attr('src','/ME_LowPoly.png')
             $('[name=grid]').hide();
             $('[name=jobtitle]').text('Web Developer')
         })
