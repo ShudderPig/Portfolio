@@ -90,14 +90,7 @@ const lps = {
                     .toString();
             }
         })
-
-        // clone for models //
-        Object.defineProperty(Object.prototype, 'clone', {
-            value: function clone() {
-                return JSON.parse(JSON.stringify(this));
-            }
-        })
-
+        
         if (callback) {
             callback()
         }
