@@ -12,7 +12,7 @@ const lps = {
         
         Promise.all([
             pullImage('/madme_lowpoly.png'),
-            pullImage('/Me_LowPoly.png'),
+            pullImage('/ME_LowPoly.png'),
             pullImage('/particle.png')
         ]).then((images) => {
             lps.designerImg = images.filter(i => i.src.includes('madme_lowpoly'))[0];
