@@ -1,16 +1,35 @@
 const lps = {
+    // images //
+    designerImg:null,
+    developerImg:null,
+    designerPtc:null,
+    developerPtc:null,
+    
     init: () => {
         if (window.location.href.includes('.html')) {
             window.location.href = '/'
         }
+        
+        Promise.all([
+            pullImage('/madme_lowpoly.png'),
+            pullImage('/Me_LowPoly.png'),
+            pullImage('/particle.png')
+        ]).then((images) => {
+            lps.designerImg = images.filter(i => i.src.includes('madme_lowpoly'))[0];
+            lps.developerImg = images.filter(i => i.src.includes('Me_LowPoly'))[0];
+            lps.designerPtc = images.filter(i => i.src.includes('particle'))[0];
+            lps.developerPtc = images.filter(i => i.src.includes('particle'))[0];
+            
+            lps.definePrototypes(() => {
+                lps.currentPage = page = (lps.getPageFromUri() || 'Home')
 
-        lps.definePrototypes(() => {
-            lps.currentPage = page = (lps.getPageFromUri() || 'Home')
+                lps.loadPage(page)       
+            })
 
-            lps.loadPage(page)       
+            lps.particles.init();
         })
-
-        lps.particles.init();
+        
+        
     },
 
     loadPage: (page) => {
@@ -101,12 +120,9 @@ const lps = {
         init: function () {
             let particleCount = 0;
 
-            let particle = new Image();
-            particle.src = "/particle.png";
-            particle.onload = () => {
-                lps.particles.setup(particle)
-            }
-
+            let particle = lps.designerPtc;            
+            
+            lps.particles.setup(particle)       
         },
 
         setup: (particles) => {
@@ -197,15 +213,16 @@ const lps = {
 home = {
     init:() =>{
         let root = $('[name=home].content')
-        $('.mid-sec > img',root).on('mouseover',(e) => {
-            $('.mid-sec > img',root).attr('src','/madme_lowpoly.png')
-            $('[name=grid]').show();
+        $('.mid-sec',root).on('mouseover','img',(e) => {
+            $('.mid-sec > img').remove()
+            $('.mid-sec').prepend(lps.designerImg)
+            
             $('[name=jobtitle]').text('Designer')
         })
         
-        $('.mid-sec > img',root).on('mouseleave',(e) => {
-            $('.mid-sec > img',root).attr('src','/ME_LowPoly.png')
-            $('[name=grid]').hide();
+        $('.mid-sec',root).on('mouseleave','img',(e) => {
+            $('.mid-sec > img').remove()
+            $('.mid-sec').prepend(lps.developerImg)
             $('[name=jobtitle]').text('Web Developer')
         })
     }
@@ -225,3 +242,20 @@ contact = {
 $(function () {
     lps.init();
 })
+
+function pullImage(url){
+    return new Promise((resolve,reject) => {
+        let image = new Image();
+        
+        image.onload = function(){
+            resolve(image)
+        }
+        
+        image.onerror = function(){
+            let msg = "image could not be loaded from url : " + url;
+            reject( new Error(msg))
+        }
+        
+        image.src = url;
+    })    
+}
