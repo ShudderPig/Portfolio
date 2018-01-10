@@ -4,6 +4,7 @@ const lps = {
     developerImg:null,
     designerPtc:null,
     developerPtc:null,
+    particleInUse:lps.developerPtc,
     
     init: () => {
         if (window.location.href.includes('.html')) {
@@ -120,7 +121,7 @@ const lps = {
         init: function () {
             let particleCount = 0;
 
-            let particle = lps.designerPtc;            
+            let particle = lps.particleInUse;            
             
             lps.particles.setup(particle)       
         },
