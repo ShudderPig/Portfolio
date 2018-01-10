@@ -103,11 +103,21 @@ p[name=email]{
     pointer-events: none;
     display:none;
 }
-@-webkit-keyframes float {
-    /*0%    { margin-top: -.5% }
-    50%    { margin-top: .5% }
-    100%    {margin-top: -.5%}*/
+@keyframes float {
+	0% {
+		
+		transform: translatey(0px);
+	}
+	50% {
+		
+		transform: translatey(-20px);
+	}
+	100% {
+		
+		transform: translatey(0px);
+	}
 }
+
 [name=render-content] {
     overflow: auto;
     z-index: 10;
@@ -119,12 +129,8 @@ p[name=email]{
             padding:@pad;
             font-size: 1rem;
         }
-        &[name=home] {
-            animation-name: float;
-            animation-delay: 0;
-            animation-duration: 4s;
-            animation-iteration-count: infinite;
-            animation-timing-function: ease-in-out;
+        &[name=home] {            
+            animation: float 6s ease-in-out infinite;
             z-index: 1;
             display: grid;
             @media screen and (min-width: 1280px){
