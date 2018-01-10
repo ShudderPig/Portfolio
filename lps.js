@@ -214,15 +214,13 @@ home = {
     init:() =>{
         let root = $('[name=home].content')
         $('.mid-sec',root).on('mouseover','img',(e) => {
-            $('.mid-sec > img').remove()
-            $('.mid-sec').prepend(lps.designerImg)
+            $('.mid-sec img').attr("src",lps.designerImg.src)
             
             $('[name=jobtitle]').text('Designer')
         })
         
         $('.mid-sec',root).on('mouseleave','img',(e) => {
-            $('.mid-sec > img').remove()
-            $('.mid-sec').prepend(lps.developerImg)
+            $('.mid-sec img').attr("src",lps.developerImg.src)
             $('[name=jobtitle]').text('Web Developer')
         })
     }
