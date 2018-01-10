@@ -16,7 +16,7 @@ const lps = {
             pullImage('/particle.png')
         ]).then((images) => {
             lps.designerImg = images.filter(i => i.src.includes('madme_lowpoly'))[0];
-            lps.developerImg = images.filter(i => i.src.includes('Me_LowPoly'))[0];
+            lps.developerImg = images.filter(i => i.src.includes('ME_LowPoly'))[0];
             lps.designerPtc = images.filter(i => i.src.includes('particle'))[0];
             lps.developerPtc = images.filter(i => i.src.includes('particle'))[0];
             
