@@ -4,7 +4,7 @@ const lps = {
     developerImg:null,
     designerPtc:null,
     developerPtc:null,
-    particleInUse:lps.developerPtc,
+    particleInUse:null,
     
     init: () => {
         if (window.location.href.includes('.html')) {
@@ -20,6 +20,8 @@ const lps = {
             lps.developerImg = images.filter(i => i.src.includes('ME_LowPoly'))[0];
             lps.designerPtc = images.filter(i => i.src.includes('particle'))[0];
             lps.developerPtc = images.filter(i => i.src.includes('particle'))[0];
+            
+            lps.particleInUse = lps.developerPtc
             
             lps.definePrototypes(() => {
                 lps.currentPage = page = (lps.getPageFromUri() || 'Home')
